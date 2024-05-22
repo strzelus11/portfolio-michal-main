@@ -1,12 +1,73 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Hero from "./sections/Hero";
+
+import React, { useState, useRef, useEffect } from "react";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 function App() {
-  return (
-      <div className='sticky top-0 z-10'>
-          <Header />
-    </div>
-  );
+	const [top, setTop] = useState(true);
+	const [bottom, setBottom] = useState(false);
+	const sectionsRef = useRef([]);
+	const currentSection = useRef(0);
+
+	const scrollToNext = () => {
+		if (currentSection.current < sectionsRef.current.length - 1) {
+			currentSection.current += 1;
+			sectionsRef.current[currentSection.current].scrollIntoView({
+				behavior: "smooth",
+			});
+
+			if (currentSection.current === 5) {
+				setBottom(true);
+				setTop(false);
+			}
+		}
+	};
+
+	const scrollToTop = () => {
+		sectionsRef.current[0].scrollIntoView({
+			behavior: "smooth",
+		});
+		currentSection.current = 0;
+		setBottom(false);
+		setTop(true);
+	};
+
+	const handleScroll = () => {
+		setTop(window.scrollY === 0);
+	};
+
+	useEffect(() => {
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+
+	return (
+		<>
+			<div className="sticky top-0 z-10">
+				<Header />
+			</div>
+            <div className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+                <div className="snap-center h-screen" ref={(el) => (sectionsRef.current[0] = el)}>
+                    <Hero />
+                    
+                </div>
+                {/* <div className="snap-center">
+                    <Footer />
+                </div> */}
+			</div>
+			<button
+				className="transition delay-100 duration-200 fixed bottom-10 right-10 bg-secondary text-white p-3 rounded-full opacity-50 hover:opacity-100 hover:scale-105"
+				onClick={bottom ? scrollToTop : scrollToNext}
+			>
+				{bottom ? <IoIosArrowUp /> : <IoIosArrowDown />}
+			</button>
+		</>
+	);
 }
 
 export default App;
