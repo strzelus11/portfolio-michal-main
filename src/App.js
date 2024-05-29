@@ -1,10 +1,13 @@
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Skills from "./sections/Skills";
 import Hero from "./sections/Hero";
+import More from "./sections/More";
 
 import React, { useState, useRef, useEffect } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import Hobbys from "./sections/Hobbys";
 
 function App() {
 	const [top, setTop] = useState(true);
@@ -55,6 +58,15 @@ function App() {
                 <div className="snap-center h-screen" ref={(el) => (sectionsRef.current[0] = el)}>
                     <Hero />
                     
+                </div>
+                <div className="snap-center h-screen" ref={(el) => (sectionsRef.current[1] = el)}>
+                    <More />
+                </div>
+                <div className="snap-center h-screen" ref={(el) => (sectionsRef.current[2] = el)}>
+                    <Skills />
+                </div>
+                <div className="snap-center h-screen" ref={(el) => (sectionsRef.current[3] = el)}>
+                    <Hobbys />
                 </div>
                 {/* <div className="snap-center">
                     <Footer />
