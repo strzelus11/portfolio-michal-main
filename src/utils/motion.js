@@ -15,6 +15,11 @@ export const slideIn = (direction, type, delay, duration) => ({
 			ease: "easeOut",
 		},
 	},
+	exit: {
+		x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
+		y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
+		opacity: 0,
+	},
 });
 
 export const fadeIn = (direction, type, delay, duration) => ({

@@ -49,3 +49,24 @@ body {
     inset: 0;
     opacity: 0.5;
 }
+
+#GetStarted::before {
+    background-size: cover;
+    background-position: center;
+    background-image: url("./getstarted.jpeg");
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+}
+
+@media only screen and (max-width: 640px) {
+    html {
+        overflow-x: hidden;
+    }
+    body {
+        overflow-x: hidden;
+        width: 100vw;
+        font-size: 20px;
+    }
+}

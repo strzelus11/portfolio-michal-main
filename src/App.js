@@ -8,6 +8,8 @@ import More from "./sections/More";
 import React, { useState, useRef, useEffect } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Hobbys from "./sections/Hobbys";
+import Testimonials from "./sections/Testimonials";
+import GetStarted from "./sections/GetStarted";
 
 function App() {
 	const [top, setTop] = useState(true);
@@ -51,13 +53,12 @@ function App() {
 
 	return (
 		<>
-			<div className="sticky top-0 z-10">
+			<div className="fixed w-full top-0 z-10">
 				<Header />
 			</div>
             <div className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
                 <div className="snap-center h-screen" ref={(el) => (sectionsRef.current[0] = el)}>
                     <Hero />
-                    
                 </div>
                 <div className="snap-center h-screen" ref={(el) => (sectionsRef.current[1] = el)}>
                     <More />
@@ -65,12 +66,18 @@ function App() {
                 <div className="snap-center h-screen" ref={(el) => (sectionsRef.current[2] = el)}>
                     <Skills />
                 </div>
-                <div className="snap-center h-screen" ref={(el) => (sectionsRef.current[3] = el)}>
+                <div className="snap-center sm:h-screen" ref={(el) => (sectionsRef.current[3] = el)}>
                     <Hobbys />
                 </div>
-                {/* <div className="snap-center">
+                <div className="snap-center sm:h-screen" ref={(el) => (sectionsRef.current[4] = el)}>
+                    <Testimonials />
+                </div>
+                <div className="snap-center h-screen" ref={(el) => (sectionsRef.current[5] = el)}>
+                    <GetStarted />
+                </div>
+                <div className="snap-center">
                     <Footer />
-                </div> */}
+                </div>
 			</div>
 			<button
 				className="transition delay-100 duration-200 fixed bottom-10 right-10 bg-secondary text-white p-3 rounded-full opacity-50 hover:opacity-100 hover:scale-105"

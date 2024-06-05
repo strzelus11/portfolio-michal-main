@@ -34,7 +34,7 @@ const Skills = () => {
 						{hoveredSkill}
 					</h1>
 				</div>
-				<div className="flex justify-between gap-x-5">
+				<div className="grid grid-cols-3 sm:flex justify-between gap-x-5 gap-y-5">
 					<SkillIcon
 						Icon={FaHtml5}
 						onMouseEnter={() => handleSkillHover("HTML", "red")}
